@@ -1,0 +1,63 @@
+if [ "$(id -u)" -eq 0 ]; then
+echo "Please do not run bedit, with SUDO/ROOT permissions."
+exit 1
+fi
+current_dir=$(pwd)
+cd /lib/bedit
+help() {
+echo "Usage: bedit unpack <filename>"
+echo ""
+echo ""
+echo "Usage: bedit pack"
+echo ""
+echo ""
+echo ""
+exit 0
+}
+if [ -z "$1" ]; then
+echo "Invalid command. Use 'bedit -h' to see available options."
+exit 0
+fi
+if [ "$1" = "help" ]; then
+help
+fi
+if [ "$1" = "h" ]; then
+help
+fi
+if [ "$1" = "-h" ]; then
+help
+fi
+if [ "$1" = "--h" ]; then
+help
+fi
+if [ "$1" = "unpack" ]; then
+if [ -z "$2" ]; then
+echo "Usage: bedit unpack <bootimage.img>"
+exit 0
+fi
+clear
+sudo rm -rf "/lib/bedit/boot.img"
+sudo cp -r -f "$current_dir/$2" "/lib/bedit/boot.img"
+cd /lib/bedit
+sudo ./beditor unpack
+sudo cp -r "build" "$current_dir/unpacked_boot_image"
+if [ $? -ne 0 ]; then
+echo "Error Detected may not work try again"
+exit 1
+fi
+exit 0
+fi
+if [ "$1" = "pack" ]; then
+clear
+sudo rm -rf "/lib/bedit/build"
+sudo cp -r -f "$current_dir/unpacked_boot_image" "/lib/bedit/build"
+sudo ./beditor pack
+sudo mv "/lib/bedit/boot.img.signed" "$current_dir/repacked_image.img"
+if [ $? -ne 0 ]; then
+echo "Error Detected may not work try again"
+exit 1
+fi
+exit 0
+fi
+echo "Invalid command. Use 'help' to see available options."
+exit 0
