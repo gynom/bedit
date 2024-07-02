@@ -53,6 +53,7 @@ sudo rm -rf "/lib/bedit/build"
 sudo cp -r -f "$current_dir/unpacked_boot_image/build" "/lib/bedit"
 sudo ./beditor pack
 sudo mv "/lib/bedit/boot.img.signed" "$current_dir/repacked_image.img"
+chmod 777 "$current_dir/repacked_image.img"
 if [ $? -ne 0 ]; then
 echo "Error Detected may not work try again"
 exit 1
