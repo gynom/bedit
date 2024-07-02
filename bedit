@@ -55,7 +55,7 @@ sudo ./beditor pack
 sudo mv "/lib/bedit/boot.img.signed" "$current_dir/repacked_image.img"
 if [ $? -ne 0 ]; then
 echo "Error Detected may not work try again"
-exit 1z
+exit 1
 fi
 exit 0
 fi
