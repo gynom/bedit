@@ -54,6 +54,7 @@ sudo mkdir "/lib/bedit/build"
 sudo cp -r -f "$current_dir/unpacked_boot_image/unzip_boot" "/lib/bedit/build"
 sudo ./beditor pack
 sudo mv "/lib/bedit/boot.img.signed" "$current_dir/repacked_image.img"
+sudo chmod 777 "$current_dir/repacked_image.img"
 if [ $? -ne 0 ]; then
 echo "Error Detected may not work try again"
 exit 1
