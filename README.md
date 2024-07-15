@@ -1,6 +1,6 @@
 ## Installation
 ```
-sudo apt install git device-tree-compiler lz4 xz-utils zlib1g-dev openjdk-17-jdk gcc g++ python3 python-is-python3 p7zip-full android-sdk-libsparse-utils && cd $home && git clone https://github.com/loli067/bedit && cd bedit && sh setup.sh
+sudo apt install git device-tree-compiler lz4 xz-utils zlib1g-dev openjdk-17-jdk gcc g++ python3 python-is-python3 p7zip-full android-sdk-libsparse-utils && cd $home && git clone https://github.com/gynom/bedit && cd bedit && sh setup.sh
 ``` 
 ## Usage 
 ```
